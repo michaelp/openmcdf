@@ -219,7 +219,7 @@ namespace OpenMcdf.Test
         public void Test_OPEN_FROM_STREAM()
         {
             String filename = "reportREAD.xls";
-            File.Copy(filename, "reportOPENFROMSTREAM.xls");
+            File.Copy(filename, "reportOPENFROMSTREAM.xls", true);
             FileStream fs = new FileStream(filename, FileMode.Open);
             CompoundFile cf = new CompoundFile(fs);
             CFStream foundStream = cf.RootStorage.GetStream("Workbook");
