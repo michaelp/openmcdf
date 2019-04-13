@@ -16,13 +16,14 @@ variables:
   # pay attention to  slashes
   testsProject:  'sources/Test/OpenMcdf.Test/OpenMcdf.Test.csproj'
   buildProject: 'sources/OpenMcdf/OpenMcdf.csproj'
-  
+  # without filter it  will timoeout in azure AFTER 60+ min
+  testFilter: "Name!=Test_FIX_BUG_GH_14&Name!=Test_FIX_BUG_GH_15"
 
 steps:
 - script: dotnet build --configuration $(buildConfiguration) -f $(libFramework) $(buildProject)
   displayName: 'dotnet build $(buildConfiguration)'
 
-- script: dotnet test -f $(appFramework)  $(testsProject) --logger trx
+- script: dotnet test -f $(appFramework)  $(testsProject) --filter=$(testFilter) --logger trx
 - task: PublishTestResults@2
   condition: succeededOrFailed()
   inputs:
