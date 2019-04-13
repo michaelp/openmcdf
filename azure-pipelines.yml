@@ -11,7 +11,8 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  framework: 'netstandard2.0'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
+- script: dotnet build --configuration $(buildConfiguration) -f $(framework)
   displayName: 'dotnet build $(buildConfiguration)'
