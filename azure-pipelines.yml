@@ -11,8 +11,20 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  framework: 'netstandard2.0'
+  libFramework: 'netstandard2.0'
+  appFramework: 'netcoreapp2.0'
+  # pay attention to  slashes
+  testsProject:  'sources/Test/OpenMcdf.Test/OpenMcdf.Test.csproj'
+  buildProject: 'sources/OpenMcdf/OpenMcdf.csproj'
+  
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration) -f $(framework) sources/OpenMcdf/OpenMcdf.csproj
+- script: dotnet build --configuration $(buildConfiguration) -f $(libFramework) $(buildProject)
   displayName: 'dotnet build $(buildConfiguration)'
+
+- script: dotnet test -f $(appFramework)  $(testsProject) --logger trx
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
+  inputs:
+    testRunner: VSTest
+    testResultsFiles: '**/*.trx'
