@@ -14,5 +14,5 @@ variables:
   framework: 'netstandard2.0'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration) -f $(framework)
+- script: dotnet build --configuration $(buildConfiguration) -f $(framework) sources/OpenMcdf/OpenMcdf.csproj
   displayName: 'dotnet build $(buildConfiguration)'
