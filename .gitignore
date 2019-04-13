@@ -3,8 +3,9 @@
 ################################################################################
 obj/
 /.vs/OpenMcdf/v14
-/bin/Debug
-/TestResults
+# all bin directories anywhere in the repo
+bin/
+TestResults/
 /sources/Test/OpenMcdf.Test/bin/Debug
 /sources/Test/OpenMcdf.PerfTest/obj/Debug
 /sources/Test/OpenMcdf.PerfTest/bin/Debug
