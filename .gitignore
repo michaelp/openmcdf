@@ -6,6 +6,7 @@ obj/
 # all bin directories anywhere in the repo
 bin/
 TestResults/
+BenchmarkDotNet.Artifacts/
 /sources/Test/OpenMcdf.Test/bin/Debug
 /sources/Test/OpenMcdf.PerfTest/obj/Debug
 /sources/Test/OpenMcdf.PerfTest/bin/Debug
